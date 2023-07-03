@@ -9,25 +9,17 @@
 <body>
 
     <script type="text/javascript">
-        // https://waytolearnx.com/2019/09/tri-par-insertion-en-javascript.html?utm_content=cmp-true
 
-        function tri_insertion(tab){
+        function tri_selection(tab){
             console.log("before "+tab);
-            let temp,i,j;
-            for(i = 1; i < tab.length; i++){
 
-                temp = tab[i];
-                j = i;
-                while(j > 0 && tab[j-1] > temp){
-                    tab[j] = tab[j-1];
-                    tab[j-1] = temp;
-
-                    j--;
-                }
+            for(let i = 0; i < tab.length; i++){
+                
             }
+            
         }
         let tab = [5, 8, 11, 6, 1, 9, 3];
-        tri_insertion(tab);
+        tri_selection(tab);
         console.log("after "+tab);
 
     </script>
