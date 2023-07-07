@@ -255,26 +255,47 @@ function heapsort(tab) {
     }
     for(let i = tab.length - 1;0 <= i; i--){
         swap(0,i);
-        descendre(tab,i,0);
+        redescendre(tab,i,0);
     }
-
-    
 }
-function remonter(){
-
+function remonter(tab,i){
+    let np;
+    if(i%2 != 0){
+        np = (i-1)/2;
+    }else{
+        np = (i -2)/2;
+    }
+    if(np >= 0 && tab[i].distanceFromGrenoble > tab[np].distanceFromGrenoble){
+        swap(i,np);
+        remonter(tab,np);
+    }
+}
+function redescendre(tab, f, i){
+    let child1 = 2*i+1;
+    let child2;
+    let max;
+    if(child1 < f){
+        child2 = 2*i +2;
+        if(child2 >= f || tab[child1].distanceFromGrenoble > tab[child2].distanceFromGrenoble){
+            max = child1;
+        }else{
+            max = child2;
+        }
+        if(tab[max].distanceFromGrenoble > tab[i].distanceFromGrenoble){
+            swap(max,i);
+            redescendre(tab,f,max)
+        }
+    }
 }
 
 function quicksort(a,b) {
     if(a < b){
         let p = partition(a, b);
-
         quicksort(a, p - 1);
         quicksort(p + 1, b);
     }
 }
 function partition(a, b){
-
-    
     let pivot = b;
     let j = a;
     for(let i = a; i < b; i++){
